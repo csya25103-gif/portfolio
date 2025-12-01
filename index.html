@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | 情報系大学生ポートフォリオ</title>
+    <title>My Portfolio | 山本</title>
     <!-- FontAwesome (アイコン用) CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Google Fonts: Noto Sans JP (清潔感のあるフォント) -->
+    <!-- Google Fonts: Noto Sans JP -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -16,7 +16,8 @@
             --color-primary: #3B82F6; /* 鮮やかな青 */
             --color-secondary: #60A5FA; /* 明るい青 */
             --color-text: #1F2937; /* 濃いグレー */
-            --color-bg: #F9FAFB; /* 薄いグレーの背景 */
+            --color-light-text: #4B5563; /* 薄めのグレー */
+            --color-bg: #F3F4F6; /* 薄いグレーの背景 */
             --color-white: #FFFFFF;
             --color-border: #E5E7EB;
         }
@@ -38,21 +39,21 @@
         /* 共通レイアウト */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px; /* 読みやすさを考慮して少し狭める */
             margin-left: auto;
             margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
         }
 
         section {
-            padding: 3rem 0;
+            padding: 4rem 0;
         }
 
         /* ヘッダー */
         header {
             background-color: var(--color-white);
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -62,7 +63,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 4rem; /* 64px */
+            height: 4rem;
         }
 
         .logo {
@@ -70,16 +71,33 @@
             font-weight: 700;
             color: var(--color-primary);
             text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-primary);
         }
 
         /* メインコンテンツのカードスタイル */
         .card {
             background-color: var(--color-white);
-            border-radius: 0.75rem; /* 12px */
-            padding: 2rem;
+            border-radius: 1rem;
+            padding: 2.5rem;
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border: 1px solid var(--color-border);
         }
         
         /* セクションタイトル */
@@ -88,116 +106,273 @@
             font-size: 2rem;
             font-weight: 700;
             color: var(--color-primary);
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
+            margin-bottom: 3rem;
             position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 60px;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
             height: 4px;
-            background-color: var(--color-secondary);
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
             border-radius: 2px;
         }
 
         /* 自己紹介セクション */
-        .profile-header {
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            margin-bottom: 2rem;
         }
+
         .profile-icon-box {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1rem;
-            background-color: var(--color-secondary);
+            width: 140px;
+            height: 140px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 4rem;
             color: var(--color-white);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
         }
 
         .name {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--color-primary);
-        }
-        .affiliation {
-            font-size: 1.125rem;
             color: var(--color-text);
         }
         
-        /* ガクチカセクション */
-        .gacuchika-content h3 {
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--color-border);
-            padding-bottom: 0.5rem;
-        }
-        
-        .gacuchika-item {
+        .affiliation {
+            font-size: 1.25rem;
+            color: var(--color-light-text);
             margin-bottom: 1.5rem;
-        }
-        
-        .gacuchika-item p {
-            margin-top: 0.5rem;
-            padding-left: 1rem;
-            border-left: 4px solid var(--color-secondary);
-            background-color: var(--color-bg);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            font-size: 1rem;
+            font-weight: 500;
         }
 
-        .gacuchika-item h4 {
+        .affiliation i {
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+        }
+
+        .intro-text {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-light-text);
+        }
+        
+        /* Skills セクション */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .skill-bar-bg {
+            width: 100%;
+            height: 10px;
+            background-color: #E5E7EB;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background-color: var(--color-primary);
+            border-radius: 5px;
+        }
+
+        .skill-desc {
+            font-size: 0.85rem;
+            color: var(--color-light-text);
+            margin-top: 0.25rem;
+        }
+        
+        /* Works セクション */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background-color: #F9FAFB;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .work-thumbnail {
+            height: 160px;
+            background-color: var(--color-secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-white);
+            font-size: 3rem;
+        }
+
+        .work-content {
+            padding: 1.5rem;
+        }
+
+        .work-title {
             font-size: 1.25rem;
             font-weight: 700;
-            color: var(--color-text);
             margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .work-desc {
+            font-size: 0.9rem;
+            color: var(--color-light-text);
+            margin-bottom: 1rem;
+        }
+
+        .work-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .work-tag {
+            font-size: 0.75rem;
+            background-color: #E0E7FF;
+            color: var(--color-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        /* ガクチカセクション */
+        .gacuchika-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gacuchika-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .gacuchika-item h4 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .gacuchika-item h4 i {
+            background-color: var(--color-bg);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 1rem;
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+
+        .gacuchika-text {
+            background-color: var(--color-bg);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            border-left: 4px solid var(--color-secondary);
+        }
+
+        /* Contact セクション */
+        .contact-content {
+            text-align: center;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background-color: #2563EB;
         }
 
         /* フッター */
         footer {
             background-color: var(--color-primary);
             color: var(--color-white);
-            padding: 1.5rem 0;
+            padding: 2rem 0;
             text-align: center;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
         }
 
-        /* レスポンシブデザイン (モバイル向け調整) */
+        /* レスポンシブデザイン */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 1.25rem;
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .card {
+                padding: 1.5rem;
             }
             .name {
-                font-size: 1.75rem;
-            }
-            .affiliation {
-                font-size: 1rem;
+                font-size: 2rem;
             }
             .section-title {
                 font-size: 1.75rem;
             }
-            .card {
-                padding: 1.5rem;
-                margin-left: 0.5rem;
-                margin-right: 0.5rem;
+            .nav-links {
+                display: none; /* モバイルではシンプルにするため非表示 */
+            }
+            .gacuchika-item {
+                padding-left: 0;
             }
             .gacuchika-item h4 {
-                font-size: 1.125rem;
+                font-size: 1.2rem;
             }
-            .gacuchika-item p {
-                padding: 0.75rem;
+            .gacuchika-text {
+                padding: 1rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -208,7 +383,13 @@
     <header>
         <div class="container header-content">
             <a href="#" class="logo">My Portfolio</a>
-            <!-- ナビゲーションを省略。必要に応じて追加可能 -->
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#works">Works</a>
+                <a href="#experience">Gakuchika</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
     </header>
 
@@ -216,82 +397,230 @@
         
         <!-- 2. 自己紹介セクション -->
         <section id="about">
-            <div class="card">
+            <div class="card profile-container">
                 <h2 class="section-title">ABOUT ME</h2>
-                <div class="profile-header">
-                    <!-- FontAwesomeアイコンを代用したプロフィール画像風ボックス -->
-                    <div class="profile-icon-box">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    
-                    <h1 class="name">[あなたの名前またはハンドルネーム]</h1>
-                    <p class="affiliation"><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>[大学・学部名など]</p>
-                    
-                    <p style="margin-top: 1.5rem; color: #4B5563;">
-                        情報科学を専攻し、主にWeb技術とデータ分析に興味を持っています。新しい技術への挑戦を恐れず、常に学び続けることをモットーとしています。
+                
+                <!-- プロフィール画像（アイコンで代用） -->
+                <div class="profile-icon-box">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                
+                <h1 class="name">山本</h1>
+                <p class="affiliation">
+                    <i class="fas fa-university"></i>理工学部 応用情報工学科
+                </p>
+                
+                <div class="intro-text">
+                    <p>
+                        はじめまして。Web技術とデザインエンジニアリングを専攻している情報系大学生です。
+                        「使いやすさ」と「美しさ」を両立するUI/UXデザインと、効率的なバックエンド実装の両方に興味があります。
+                        現在はReactを中心としたフロントエンド開発と、Pythonを用いたデータ分析について学習を深めています。
+                        新しい技術へのキャッチアップを怠らず、常にユーザー目線での開発を心がけています。
                     </p>
                 </div>
             </div>
         </section>
-        
-        <!-- 3. 学生時代に力を入れたこと（ガクチカ）セクション -->
-        <section id="experience">
+
+        <!-- 3. スキルセクション (新規追加) -->
+        <section id="skills" style="padding-top: 0;">
             <div class="card">
-                <h2 class="section-title">学生時代に力を入れたこと (Gakuchika)</h2>
-                
-                <div class="gacuchika-content">
+                <h2 class="section-title">SKILLS</h2>
+                <div class="skills-grid">
                     
-                    <div class="gacuchika-item">
-                        <h4><i class="fas fa-project-diagram" style="margin-right: 10px; color: var(--color-primary);"></i>プログラミング学習コミュニティの立ち上げと運営</h4>
-                        <p>
-                            私が学生時代に最も力を入れたことは、学内のプログラミング学習コミュニティの立ち上げと運営です。コロナ禍で対面授業が減り、特に初心者が学習のモチベーションを保ちにくい状況を目の当たりにし、この課題を解決したいと考えました。
-                        </p>
+                    <!-- Frontend -->
+                    <div>
+                        <h3 style="margin-bottom: 1.5rem; color: var(--color-primary);"><i class="fas fa-code"></i> Frontend</h3>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>HTML5 / CSS3</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 90%;"></div>
+                            </div>
+                            <p class="skill-desc">セマンティックなマークアップとレスポンシブデザインの実装が可能。</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>JavaScript / TypeScript</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 80%;"></div>
+                            </div>
+                            <p class="skill-desc">ES6以降の構文、非同期処理、型定義を用いた開発経験あり。</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>React</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 75%;"></div>
+                            </div>
+                            <p class="skill-desc">Hooksを用いた状態管理、コンポーネント設計が可能。</p>
+                        </div>
                     </div>
 
-                    <div class="gacuchika-item">
-                        <h4><i class="fas fa-users" style="margin-right: 10px; color: var(--color-primary);"></i>具体的な活動と成果</h4>
-                        <p>
-                            まず、SNSや学内掲示板でメンバーを募集し、活動に賛同してくれた仲間3名と運営チームを結成。目標を「誰もが気軽に質問・相談できる、挫折しにくい環境の提供」に設定しました。活動内容として、週に一度のオンラインもくもく会、月一度のWeb技術ハンズオンセミナーを企画・実施しました。特に工夫したのは、初心者向けのハンズオン資料の作成です。専門用語を極力避け、図解を多く用いることで、技術的なハードルを下げることに注力しました。結果、コミュニティは1年で100名を超える規模に成長し、参加者アンケートでは「プログラミング学習への抵抗感がなくなった」「一人では解決できなかったエラーをすぐに解決できた」といった高い評価を得ることができました。
-                        </p>
+                    <!-- Backend & Others -->
+                    <div>
+                        <h3 style="margin-bottom: 1.5rem; color: var(--color-primary);"><i class="fas fa-server"></i> Backend & Tools</h3>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Python</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 85%;"></div>
+                            </div>
+                            <p class="skill-desc">Django/Flaskを用いたWebアプリ開発、Pandasでのデータ処理。</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Git / GitHub</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 80%;"></div>
+                            </div>
+                            <p class="skill-desc">基本的なコマンド操作、プルリクエストベースのチーム開発経験あり。</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Figma</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 70%;"></div>
+                            </div>
+                            <p class="skill-desc">ワイヤーフレーム作成、基本的なUIプロトタイピングが可能。</p>
+                        </div>
                     </div>
-
-                    <div class="gacuchika-item">
-                        <h4><i class="fas fa-lightbulb" style="margin-right: 10px; color: var(--color-primary);"></i>この経験から学んだこと</h4>
-                        <p>
-                            この経験を通じて、チームで協力して目標を達成する難しさと喜び、そしてユーザー（ここではコミュニティ参加者）のニーズを深く理解し、それに合わせた価値を提供することの重要性を学びました。この企画力と実行力は、将来エンジニアとして働く上でも必ず活かせると確信しています。
-                        </p>
-                    </div>
-
-                    <!--
-                    【ガクチカの文章を差し替える際の注意】
-                    以下の3つのdivタグの中の<p>タグの内容を、あなたの実際の文章に置き換えてください。
-                    文章が長い場合は、項目（h4タグ）を増やして分割すると見やすくなります。
-                    -->
 
                 </div>
             </div>
         </section>
 
-        <!-- ポートフォリオやスキルセクションの追記スペース -->
-        <section id="skills" style="padding-top: 0;">
+        <!-- 4. 制作実績セクション (新規追加) -->
+        <section id="works" style="padding-top: 0;">
             <div class="card">
-                <h2 class="section-title">SKILLS & TOOLS</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
-                    <span style="background-color: #FEE2E2; color: #EF4444; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 700;">HTML/CSS</span>
-                    <span style="background-color: #FEF3C7; color: #F59E0B; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 700;">JavaScript/TypeScript</span>
-                    <span style="background-color: #D1FAE5; color: #10B981; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 700;">Python/Django</span>
-                    <span style="background-color: #DBEAFE; color: #3B82F6; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 700;">React/Vue.js</span>
-                    <span style="background-color: #E0E7FF; color: #4F46E5; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 700;">Git/GitHub</span>
+                <h2 class="section-title">WORKS</h2>
+                <div class="works-grid">
+                    
+                    <!-- Work 1 -->
+                    <div class="work-card">
+                        <div class="work-thumbnail">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="work-content">
+                            <h3 class="work-title">Task Manager App</h3>
+                            <p class="work-desc">ReactとFirebaseを使用したタスク管理アプリ。ドラッグ＆ドロップでのタスク移動機能や、ダークモード切り替え機能を実装しました。</p>
+                            <div class="work-tags">
+                                <span class="work-tag">React</span>
+                                <span class="work-tag">Firebase</span>
+                                <span class="work-tag">TailwindCSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work 2 -->
+                    <div class="work-card">
+                        <div class="work-thumbnail" style="background-color: #A78BFA;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="work-content">
+                            <h3 class="work-title">学食混雑状況可視化Bot</h3>
+                            <p class="work-desc">学食のカメラ画像から混雑状況を分析し、Slackに通知するBot。OpenCVを用いた画像処理を行い、混雑度を3段階で判定します。</p>
+                            <div class="work-tags">
+                                <span class="work-tag">Python</span>
+                                <span class="work-tag">OpenCV</span>
+                                <span class="work-tag">Slack API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work 3 -->
+                    <div class="work-card">
+                        <div class="work-thumbnail" style="background-color: #34D399;">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <div class="work-content">
+                            <h3 class="work-title">サークル公式Webサイト</h3>
+                            <p class="work-desc">所属する軽音サークルの公式サイトをリニューアル。スマホでの閲覧を意識したレスポンシブデザインと、イベント告知CMSを導入。</p>
+                            <div class="work-tags">
+                                <span class="work-tag">HTML/CSS</span>
+                                <span class="work-tag">JavaScript</span>
+                                <span class="work-tag">WordPress</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
+        </section>
+        
+        <!-- 5. 学生時代に力を入れたこと（ガクチカ）セクション -->
+        <section id="experience" style="padding-top: 0;">
+            <div class="card">
+                <h2 class="section-title">GAKUCHIKA</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--color-light-text);">学生時代に最も力を入れたこと</p>
+                
+                <div class="gacuchika-wrapper">
+                    
+                    <!-- ガクチカ：課題 -->
+                    <div class="gacuchika-item">
+                        <h4><i class="fas fa-exclamation-circle"></i>課題：連携不足による舞台失敗の危機</h4>
+                        <div class="gacuchika-text">
+                            私が学生時代に最も力を入れたのは、高校の文化祭における舞台照明リーダーの経験です。<br>
+                            担当時、音楽部や吹奏楽部など出演団体との連携が全く取れていない状況が課題でした。このままでは照明と演奏のタイミングが合わず、舞台が失敗に終わると危機感を持ちました。
+                        </div>
+                    </div>
+
+                    <!-- ガクチカ：行動 -->
+                    <div class="gacuchika-item">
+                        <h4><i class="fas fa-users-cog"></i>行動：相手視点に立った調整と対話</h4>
+                        <div class="gacuchika-text">
+                            そこで私は、各部活の担当者に自ら連絡を取り、個別に打ち合わせの場を設けました。<br>
+                            専門用語を使わず、相手に分かりやすいよう調整案を提示し、入念な連携体制を構築しました。
+                        </div>
+                    </div>
+
+                    <!-- ガクチカ：結果 -->
+                    <div class="gacuchika-item">
+                        <h4><i class="fas fa-check-circle"></i>結果：舞台の成功と信頼関係の構築</h4>
+                        <div class="gacuchika-text">
+                            その結果、照明と演奏が完璧に調和し、文化祭の舞台を成功に導きました。<br>
+                            この経験を通じ、困難な状況でも関係者に積極的に働きかけ、信頼関係を築く力を身につけました。
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. お問い合わせセクション (新規追加) -->
+        <section id="contact" style="padding-top: 0;">
+            <div class="card contact-content">
+                <h2 class="section-title">CONTACT</h2>
+                <p>ここまでご覧いただきありがとうございます。<br>ポートフォリオに関するご感想やご連絡は、以下のメールアドレスまでお願いいたします。</p>
+                
+                <a href="mailto:yamamoto.sample@example.com" class="contact-btn">
+                    <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> メールを送る
+                </a>
             </div>
         </section>
 
     </main>
 
-    <!-- 4. フッター -->
+    <!-- 7. フッター -->
     <footer>
         <div class="container">
-            &copy; 2025 [あなたの名前またはハンドルネーム]. All Rights Reserved.
+            <div style="margin-bottom: 1rem;">
+                <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <small>&copy; 2025 Yamamoto. All Rights Reserved.</small>
         </div>
     </footer>
 
